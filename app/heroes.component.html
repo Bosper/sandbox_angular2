@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Available Heroes:</h3>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item" *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.active]="hero === selectedHero">{{ hero.name }}</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div *ngIf="selectedHero" class="col-md-3">
+
+            <div class="thumbnail">
+                <img src="..." alt="...">
+                <div class="caption">
+                    <items>item, item II</items>
+                    <h3>{{ selectedHero.name }}</h3>
+                    <p>Uland spent a great deal of his life as a battlefield healer before choosing to follow the path of a Druid, but the lessons he learned serving in the military have made him into an excellent leader today. </p>
+                    <p><a class="btn btn-primary" role="button" (click)="getItems()">Edit</a> <a class="btn btn-default" role="button" (click)="onCloseQB()">Close</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<h1>Hello in {{ title }}</h1>
+
+<div *ngIf="selectedHero" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="selectedHero__intro">Your choose is: </span><span class="selectedHero__hero">{{ selectedHero.name }}</span>
+        </div>
+        <div class="panel-body">
+            <ul> He's equipment:
+	            <li *ngFor="let item of selectedHero.items" >{{ item.name }}</li>        
+            </ul>
+        </div>
+    </div>
+    
+    <input type="button" (click)="onEdit(hero)" value="Edit" />
+    <input type="button" (click)="onCloseQB()" value="Close" />
+</div>
+
+              
