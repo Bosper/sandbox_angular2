@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { HeroesService } from './heroes.service';
+
 import { Items } from './item.class';
 import { Hero } from './hero.class';
-import { HeroesService } from './heroes.service';
+
+import { DetailComponent } from './detail.component';
 
 @Component({
     selector: 'heroes-list',
     templateUrl: 'app/heroes.component.html',
-    styleUrls: [ 'app/heroes.component.css' ]
+    styleUrls: [ 'app/heroes.component.css' ],
+    directives: [DetailComponent] 
 })
 
 export class HeroesComponent implements OnInit {
@@ -16,12 +22,17 @@ export class HeroesComponent implements OnInit {
     error: any;
     sub: any;
 
-    constructor( private heroService: HeroesService ) {
+    constructor( 
+        private router: Router,
+        private heroService: HeroesService 
+        ) {
 
     }
 
     onSelect( hero: Hero ) {
         this.selectedHero = hero;
+        console.log(hero);
+        
     }
 
     getHeroes() {
@@ -30,11 +41,9 @@ export class HeroesComponent implements OnInit {
             .catch( error => this.error = error )
     }
 
-    // getItems( items: Items[] ) {
-    //     items = this.selectedHero.items;
-    //     console.log( items );
-    //     return items;
-    // }
+    goDetail( hero: Hero ) {
+        this.router.navigate([ '/detail', this.selectedHero.id ])
+    }
 
     onCloseQB() {
         this.selectedHero = null
@@ -42,8 +51,6 @@ export class HeroesComponent implements OnInit {
 
     ngOnInit() {
         this.getHeroes();
-        console.log( 'OnInit' );
-        
     }
 
 }

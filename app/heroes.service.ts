@@ -19,12 +19,14 @@ private heroesURL = 'app/heroes';
         return this.http.get( this.heroesURL )
             .toPromise()
             .then( response => response.json().data )
-            .catch( this.handleError )
+            .catch( this.handleError );
+            
     }
 
     getHero( id: number ) {
         return this.getHeroes()
             .then( heroes => heroes.find( hero => hero.id === id ) )
+            .catch( this.handleError );
     }
 
     getItems( id: number, items: Items[] ) {

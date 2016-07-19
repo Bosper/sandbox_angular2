@@ -1,0 +1,113 @@
+<div *ngIf="hero" class="container">
+    <h1>Your choose is {{ hero.name }}!</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <form>
+                <fieldset class="form-group">
+                    <label for="portrait">Portrait:</label>
+                    <div class="form-control form-control--p">
+                        <div class="col-sm-6 col-sm-6--portrait">
+                            <img class="portrait" src="{{ hero.imageUrl }}" name="portrait" alt="hero-portrait">
+                        </div>
+                        <div class="col-sm-6 ">
+                            <input class="btn btn-primary" type="button" value="Change">
+                        </div>
+                    </div>   
+                </fieldset>
+            </form>       
+        </div>
+        <div class="col-sm-4">
+            <form>
+                <fieldset class="form-group">
+                    <label for="stats">&nbsp;</label>
+                    <div name="stats" class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="selectedHero__intro">Statistics:</span>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>Strenght: 12</li>
+                                <li>Agility: 10</li>
+                                <li>Wisdom: 8</li>
+                                <li>Intelligence: 8</li>        
+                            </ul>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form>
+                <fieldset class="form-group">
+                    <label for="name">Name:</label>
+                    <input [(ngModel)]="hero.name" class="form-control" placeholder="Name of hero...">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="bio">Bio:</label>
+                    <textarea name="bio" [(ngModel)]="hero.bio" class="form-control" rows="5" cols="30"></textarea>
+                </fieldset>
+            </form> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <form>
+                <fieldset class="form-group">
+                    <label for="items">Items: </label>
+                    <ul class="list-group">
+                        <li *ngFor="let item of hero.items" class="list-group-item">
+                            <span class="badge">{{ item.amount }}</span>
+                            {{ item.name }}
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-sm-8">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <td>Status</td>
+                        <td>Task</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td><input type="checkbox" name="status" value="true" /></td>
+                        <td><span>Go to Inn</span></td>
+                        <td>
+                            <input class="btn btn-warning" type="button" name="edit" value="Edit" />
+                            <input class="btn btn-danger" type="button" name="remove" value="Remove" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="status" value="true" /></td>
+                        <td><span>Make a Pork</span></td>
+                        <td>
+                            <input class="btn btn-warning" type="button" name="edit" value="Edit" />
+                            <input class="btn btn-danger" type="button" name="remove" value="Remove" />
+                        </td>
+                    </tr>
+                    <tr *ngIf="!edit">
+                        <td><input type="checkbox" name="status" value="true" /></td>
+                        <td><span>Talk to Mate</span></td>
+                        <td>
+                            <input class="btn btn-warning" type="button" name="edit" value="Edit" (click)="taskEdit( hero )" />
+                            <input class="btn btn-danger" type="button" name="remove" value="Remove" />
+                        </td>
+                    </tr>
+                    <tr *ngIf="edit">
+                        <td><input type="checkbox" name="status" value="true" /></td>
+                        <td><input type="text" value="Talk to Mate" placeholder="Pick up a task name..." /></td>
+                        <td>
+                            <input class="btn btn-success" type="button" name="save" value="Save" />
+                            <input class="btn btn-default" type="button" name="cancel" value="Cancel" (click)="cancelEdit()" />
+                        </td>
+                    </tr>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

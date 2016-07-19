@@ -1,0 +1,28 @@
+/* Rewrite bootstrap theme */
+.form-control--p {
+    height: 220px;
+}
+
+.col-sm-6--portrait {
+    position: relative;
+    height: 100%;
+}
+
+.portrait {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+tr {
+    display: table-row;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: text-bottom !important;
+    text-align: center;
+}
