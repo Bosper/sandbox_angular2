@@ -1,0 +1,26 @@
+<div *ngIf="hero" class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{ hero.imageUrl }}" alt="" />
+        </div>
+        <div class="col-sm-4">
+            {{ hero.name }}
+        </div>
+        <div class="col-sm-4">
+            <input class="btn btn-primary" *ngIf="!inn" type="button" value="Enter to Inn!" (click)="gotoInn()">
+            <input class="btn btn-default" *ngIf="inn" type="button" value="Close Inn" (click)="closeInn()">
+            <div *ngIf="inn">
+                <ul>
+                    <li *ngFor="let task of tasks">{{ task.id }}&nbsp;{{ task.title }}&nbsp;{{ task.reward }}</li>
+                </ul>
+                <ul>
+                    <li name="preTasks" *ngFor="let task of preTasks">{{ task.id }}&nbsp;{{ task.title }}&nbsp;{{ task.reward }}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <button type="" (click)="getRandom()">getRandom</button>
+        </div>
+    </div>
+</div>
+

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Hero } from './hero.class';
 import { Items } from './item.class';
+import { Task } from './task.class';
+
 import { HeroesService } from './heroes.service'; 
 
 @Component({
@@ -19,27 +21,27 @@ export class DetailComponent implements OnInit, OnDestroy {
     error: any;
     sub: any;
 
+    public inn: boolean = false;
     navigated = false;
     edit = false;
 
     constructor(
         private heroService: HeroesService,
         private route: ActivatedRoute
-    ) {
-        
-    }
+    ) {  }
 
     taskEdit( hero ) {
         this.edit = true;
     }
-
     cancelEdit() {
         this.edit = false;
     }
 
     ngOnInit() {
         console.log( 'OnInit' );
+
         
+
         this.sub = this.route.params.subscribe( params => {
             if( params[ 'id' ] != undefined ){
                 console.log('id... OK');

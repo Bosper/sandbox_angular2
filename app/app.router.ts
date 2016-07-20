@@ -6,6 +6,7 @@ import { DetailComponent } from './detail.component';
 export const routes: RouterConfig = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'heroes', component: HeroesComponent },
+  { path: 'tasks', component: DetailComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'  },
   { path: 'detail/:id', component: DetailComponent }
 ];

@@ -4,7 +4,7 @@ export class InMemoryDataService {
             { 
                 id: 1, 
                 active: true,
-                name: 'Uland', 
+                name: 'Uland',
                 imageUrl: './public/img/1.png', 
                 bio: 'He spent a great deal of his life as a battlefield healer before choosing to follow the path of a Druid, but the lessons he learned serving in the military have made him into an excellent leader today. ', 
                 items: [
@@ -37,6 +37,28 @@ export class InMemoryDataService {
                 ]
             }
         ];
-        return { heroes };
+
+        let tasks = [
+            { 
+                id:1, 
+                title: 'Go to Inn', 
+                description: 'You have met your old friend Dwalin, you knew him during last Clan Celebration Days. You decide to meet again in a local Inn.', 
+                reward: 'Iron Cup x1'
+            },
+            { 
+                id:2, 
+                title: 'Make a Pork', 
+                description: 'You see that your grocery is almost empty. Your Hero decided to make own pork from local meat. You have to go to merchant and buy ingredients, and prepare it in your house.', 
+                reward: 'Pork x3'
+            },
+            { 
+                id:3, 
+                title: 'Visit Merchant', 
+                description: 'Grumbar, is a old merchant, who always have some interesting rumors to share. Go, visit him, and listen to newest things which happen in your neighbour last time!', 
+                reward: 'Coins x200'
+            }
+        ];
+        
+        return { heroes, tasks };
     }
 }

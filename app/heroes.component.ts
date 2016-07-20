@@ -24,7 +24,7 @@ export class HeroesComponent implements OnInit {
 
     constructor( 
         private router: Router,
-        private heroService: HeroesService 
+        private heroService: HeroesService
         ) {
 
     }

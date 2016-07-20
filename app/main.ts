@@ -2,6 +2,7 @@ import { XHRBackend } from '@angular/http';
 
 import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+//import { InMemoryTaskService } from './in-memory-task.service';
 
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { HTTP_PROVIDERS } from '@angular/http';
@@ -14,4 +15,5 @@ bootstrap( AppComponent, [
     HTTP_PROVIDERS,
     { provide: XHRBackend, useClass: InMemoryBackendService },  // Memory server
     { provide: SEED_DATA, useClass: InMemoryDataService }       // Memory data
+    //{ provide: SEED_DATA, useClass: InMemoryTaskService }       // Memory data
 ] );

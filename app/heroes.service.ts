@@ -4,12 +4,14 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Hero } from './hero.class';
 import { Items } from './item.class';
+import { Task } from './task.class';
 
 @Injectable()
 
 export class HeroesService {
 
 private heroesURL = 'app/heroes';
+private taskURL = 'app/tasks';
 
     constructor( private http: Http ) {
 
@@ -23,15 +25,28 @@ private heroesURL = 'app/heroes';
             
     }
 
+    getTasks(): Promise<Task[]> {
+        return this.http.get( this.taskURL )
+            .toPromise()
+            //.then( response => response.json().data )
+            .then( function( response ) {
+                console.log(response.json().data);
+                return response.json().data;
+
+            } )
+            .catch( this.handleError );
+    }
+
     getHero( id: number ) {
         return this.getHeroes()
             .then( heroes => heroes.find( hero => hero.id === id ) )
             .catch( this.handleError );
     }
 
-    getItems( id: number, items: Items[] ) {
-        return this.getHero( id )
-            .then( hero => hero.items );
+    activeHero( active: boolean ) {
+        return this.getHeroes()
+            .then( heroes => heroes.find( hero => hero.active === true )
+             );
     }
 
     handleError( error: any ) {
