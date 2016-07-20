@@ -4,6 +4,8 @@ import { Hero } from './hero.class';
 import { Task } from './task.class';
 import { HeroesService } from './heroes.service';
 
+import 'rxjs/add/operator/toPromise';
+
 @Component({
     selector: 'dashboard',
     templateUrl: 'app/dashboard.component.html'
@@ -20,24 +22,14 @@ export class DashboardComponent implements OnInit {
     tasks: Task[];
     preTasks: Task[] = [];
 
-    getTasks() {
-        this.heroesService.getTasks()
-            .then( tasks => this.tasks = tasks );
-    }
-
-    getRandom( tasks ) {
-            for (let index = 0; index < 2; index++) {
-            var random = Math.floor(( Math.random() * 2 ) + 1);
-            console.log( random, this.preTasks );
-            this.preTasks.push( this.tasks[random] );
-            console.log( this.preTasks );
-        }       
-        return this.preTasks;
+    getInnTasks() {
+        this.heroesService.getInnTasks()
+            .then( preTasks => this.preTasks = preTasks );
     }
 
     gotoInn() {
         this.inn = !this.inn;
-        this.getRandom( this.tasks ); 
+        this.getInnTasks();
     }
 
     closeInn() {
@@ -47,10 +39,7 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         let active: boolean = true;
 
-        this.getTasks();
-
         this.heroesService.activeHero( active )
-            .then( hero => this.hero = hero  )
-
+            .then( hero => this.hero = hero  );
     }
 }

@@ -37,6 +37,19 @@ private taskURL = 'app/tasks';
             .catch( this.handleError );
     }
 
+    getInnTasks( preTasks: Task[] = [] ) {
+        return this.getTasks()
+            .then( function( tasks ) {
+                for (let index = 0; index <= 2; index++) {
+                var random = Math.floor(( Math.random() * 4 ) + 1);
+                console.log( random, preTasks );
+                preTasks.push( tasks[random] );
+                console.log( preTasks );
+                }   
+            return preTasks;    
+        } )
+    }
+
     getHero( id: number ) {
         return this.getHeroes()
             .then( heroes => heroes.find( hero => hero.id === id ) )

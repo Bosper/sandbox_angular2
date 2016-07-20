@@ -56,6 +56,18 @@ export class InMemoryDataService {
                 title: 'Visit Merchant', 
                 description: 'Grumbar, is a old merchant, who always have some interesting rumors to share. Go, visit him, and listen to newest things which happen in your neighbour last time!', 
                 reward: 'Coins x200'
+            },
+            { 
+                id:4, 
+                title: 'Boar Hunt', 
+                description: 'In the village, winter is comming. That means, you need to make a bigger supplies, for more difficult times.', 
+                reward: 'Boar Meat x20'
+            },
+            { 
+                id:5, 
+                title: 'Find missed glass.', 
+                description: 'Your mother,- shes a preety old woman, lost her favorite glass in local forest. Find her cup, and you will recive a family treasure!', 
+                reward: 'Old Family ring x1'
             }
         ];
         
