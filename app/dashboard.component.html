@@ -2,24 +2,72 @@
     <div class="row">
         <div class="col-sm-4">
             <img src="{{ hero.imageUrl }}" alt="" />
+            <label for="vitality">{{ hero.name }}</label>
+            <div name="vitality" class="hero__vitality">
+                <div id="health"></div>
+                <div id="mana"></div>
+            </div>
         </div>
         <div class="col-sm-4">
-            {{ hero.name }}
+             <div name="stats" class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="selectedHero__intro">Class: {{ hero.class.name }}</span>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>Strenght: {{ hero.class.strength }}</li>
+                        <li>Agility: {{ hero.class.agility }}</li>
+                        <li>Condition: {{ hero.class.condition }}</li>
+                        <li>Wisdom: {{ hero.class.wisdom }}</li>       
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="col-sm-4">
             <input class="btn btn-primary" *ngIf="!inn" type="button" value="Enter to Inn!" (click)="gotoInn()">
             <input class="btn btn-default" *ngIf="inn" type="button" value="Close Inn" (click)="closeInn()">
             <div *ngIf="inn">
                 <ul>
-                    <li *ngFor="let task of tasks">{{ task.id }}&nbsp;{{ task.title }}&nbsp;{{ task.reward }}</li>
-                </ul>
-                <ul>
                     <li name="preTasks" *ngFor="let task of preTasks">{{ task.id }}&nbsp;{{ task.title }}&nbsp;{{ task.reward }}</li>
                 </ul>
             </div>
         </div>
-        <div>
-            <button type="" (click)="getRandom()">getRandom</button>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table table-stripped" *ngIf="hero.task.length">
+                <thead>
+                    <tr>
+                        <td>{{ hero.name || uppercase }} Journal:</td>
+                    </tr>
+                    <tr>
+                        <td>ID:</td>
+                        <td>Title</td>
+                        <td>Description</td>
+                        <td>Reward:</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tsk of tasks">
+                        <td>{{ tsk.id }}</td>
+                        <td>{{ tsk.title }}</td>
+                        <td>{{ tsk.description }}</td>
+                        <td>{{ tsk.reward }}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <div *ngIf="!hero.task.length">
+                <span>
+                    Currently you have no active tasks in journal. Try talk to Innkeeper to get some...
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <input type="button" value="Go to Work" (click)="goWork( hero )">
+            Damage: {{ hero.class.damage }}
+            Health: {{ hero.class.health }}
+            Power: {{ hero.class.power }}
         </div>
     </div>
 </div>

@@ -21,8 +21,7 @@ private taskURL = 'app/tasks';
         return this.http.get( this.heroesURL )
             .toPromise()
             .then( response => response.json().data )
-            .catch( this.handleError );
-            
+            .catch( this.handleError ); 
     }
 
     getTasks(): Promise<Task[]> {
@@ -30,11 +29,35 @@ private taskURL = 'app/tasks';
             .toPromise()
             //.then( response => response.json().data )
             .then( function( response ) {
-                console.log(response.json().data);
+                //console.log(response.json().data);
                 return response.json().data;
 
             } )
             .catch( this.handleError );
+    }
+
+    getHeroTask( id: number[], heroTasks: Task[] ) {
+        return this.getTasks()
+            .then( function( tasks ) {
+                console.log(tasks);
+                console.log(id);
+                
+                for (let z = 0; z < id.length; z++) {
+                    console.log(id[z]);
+                        for (let i = 0; i < tasks.length; i++) {
+                        console.log( tasks[i] );
+                        if ( id && id[z] == tasks[i].id ) {
+                            console.log( 'task: ' + tasks[i] );
+                            heroTasks.push( tasks[i] )
+                        } else {
+                            console.log( '!: ' + tasks[i] );
+                            
+                        }
+                    }
+                }    
+                console.log(heroTasks);
+                return tasks, heroTasks;
+            } )
     }
 
     getInnTasks( preTasks: Task[] = [] ) {
@@ -42,11 +65,11 @@ private taskURL = 'app/tasks';
             .then( function( tasks ) {
                 for (let index = 0; index <= 2; index++) {
                 var random = Math.floor(( Math.random() * 4 ) + 1);
-                console.log( random, preTasks );
+                //console.log( random, preTasks );
                 preTasks.push( tasks[random] );
                 console.log( preTasks );
                 }   
-            return preTasks;    
+            return preTasks;
         } )
     }
 
@@ -56,7 +79,7 @@ private taskURL = 'app/tasks';
             .catch( this.handleError );
     }
 
-    activeHero( active: boolean ) {
+    activeHero() {
         return this.getHeroes()
             .then( heroes => heroes.find( hero => hero.active === true )
              );

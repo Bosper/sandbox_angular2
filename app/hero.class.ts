@@ -5,8 +5,9 @@ export class Hero {
     id: number;
     active: boolean;
     name: string;
-    //class: Group[];
+    class: Group;
     bio: string;
     imageUrl: string;
     items: Items[];
+    task: number[];
 }
