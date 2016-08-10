@@ -27,12 +27,7 @@ private taskURL = 'app/tasks';
     getTasks(): Promise<Task[]> {
         return this.http.get( this.taskURL )
             .toPromise()
-            //.then( response => response.json().data )
-            .then( function( response ) {
-                //console.log(response.json().data);
-                return response.json().data;
-
-            } )
+            .then( response => response.json().data )
             .catch( this.handleError );
     }
 
@@ -56,19 +51,18 @@ private taskURL = 'app/tasks';
                     }
                 }    
                 console.log(heroTasks);
-                return tasks, heroTasks;
+                return heroTasks;
             } )
     }
 
-    getInnTasks( preTasks: Task[] = [] ) {
+    getRandomTask( preTasks: Task[] = [] ) {
         return this.getTasks()
             .then( function( tasks ) {
-                for (let index = 0; index <= 2; index++) {
-                var random = Math.floor(( Math.random() * 4 ) + 1);
-                //console.log( random, preTasks );
+                for (let index = 0; index < 1; index++) {
+                let random = Math.floor(( Math.random() * 4 ) + 1);
                 preTasks.push( tasks[random] );
                 console.log( preTasks );
-                }   
+                }
             return preTasks;
         } )
     }

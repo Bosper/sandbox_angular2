@@ -10,4 +10,5 @@ export class Hero {
     imageUrl: string;
     items: Items[];
     task: number[];
+    wallet: number;
 }

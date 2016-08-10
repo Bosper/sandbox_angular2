@@ -28,10 +28,21 @@ export class DashboardComponent implements OnInit {
 
     taskId: any;
 
-    getInnTasks() {
-        this.heroesService.getInnTasks()
-            .then( preTasks => this.preTasks = preTasks );
+    getInnTasksC() {
+        this.heroesService.getRandomTask()
+            .then( function(preTasks) {
+                console.log(preTasks);
+                console.log();
+                
+                
+                
+            } );
     }
+
+    getInnTasks() {
+        this.heroesService.getRandomTask()
+            .then( preTasks => this.preTasks = preTasks );
+    }   
 
     gotoInn() {
         this.inn = !this.inn;
@@ -45,6 +56,11 @@ export class DashboardComponent implements OnInit {
 
     goWork( hero:Hero ) {
         console.log( hero.name );
+        setTimeout(function() {
+            let income:number = 30;
+            hero.wallet = hero.wallet + income;
+            console.log( 'Added: ' + income + 'gold.' );    
+        }, 5000);
     }
 
     ngOnInit() {
@@ -69,8 +85,5 @@ export class DashboardComponent implements OnInit {
                 
                 return this.hero;
             }.bind( this ) );
-
-        // this.heroesService.getTasks()
-        //     .then( tasks => this.tasks = tasks )
     }
 }

@@ -16,7 +16,8 @@ export class InMemoryDataService {
                     { id: 2, name: 'Candle', amount: 2 },
                     { id: 3, name: 'Torch', amount: 1 }
                 ],
-                task: [ 1, 2, 5 ]
+                task: [ 1, 2, 5 ],
+                wallet: 0
             },
             {   id: 2, 
                 active: false,
@@ -32,7 +33,8 @@ export class InMemoryDataService {
                     { id: 22, name: 'Showel', amount: 1 },
                     { id: 33, name: 'Beer', amount: 2 }
                 ],
-                task: [ 3, 4 ]
+                task: [ 3, 4 ],
+                wallet: 0
             },
             { 
                 id: 3, 
@@ -49,7 +51,8 @@ export class InMemoryDataService {
                     { id: 55, name: 'Hammer', amount: 1 },
                     { id: 66, name: 'Bread', amount: 2 }
                 ],
-                task: []
+                task: [],
+                wallet: 0
             }
         ];
 
