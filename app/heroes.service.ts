@@ -12,6 +12,7 @@ export class HeroesService {
 
 private heroesURL = 'app/heroes';
 private taskURL = 'app/tasks';
+private itemURL = 'app/sweetshop';
 
     constructor( private http: Http ) {
 
@@ -46,7 +47,6 @@ private taskURL = 'app/tasks';
                             heroTasks.push( tasks[i] )
                         } else {
                             console.log( '!: ' + tasks[i] );
-                            
                         }
                     }
                 }    
@@ -77,6 +77,13 @@ private taskURL = 'app/tasks';
         return this.getHeroes()
             .then( heroes => heroes.find( hero => hero.active === true )
              );
+    }
+
+    getShopItems():Promise<Items[]> {
+        return this.http.get( this.itemURL )
+            .toPromise()
+            .then( response => response.json().data )
+            .catch( this.handleError );
     }
 
     handleError( error: any ) {

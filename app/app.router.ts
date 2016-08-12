@@ -7,6 +7,7 @@ export const routes: RouterConfig = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'heroes', component: HeroesComponent },
   { path: 'tasks', component: DetailComponent },
+  { path: 'sweetshop', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'  },
   { path: 'detail/:id', component: DetailComponent }
 ];

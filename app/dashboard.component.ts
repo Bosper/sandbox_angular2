@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from './hero.class';
 import { Task } from './task.class';
+import { Items } from './item.class';
 import { HeroesService } from './heroes.service';
 
 import 'rxjs/add/operator/toPromise';
@@ -19,34 +20,61 @@ export class DashboardComponent implements OnInit {
     title = 'dashboard.component';
     public inn: boolean = false;
 
-
-    gay: Hero;
     hero: Hero;
     tasks: Task[];
     preTasks: Task[] = [];
+    shopItems: Items[];
+    item:Items;
+    selectedItem: any;
     
 
     taskId: any;
 
-    getInnTasksC() {
-        this.heroesService.getRandomTask()
-            .then( function(preTasks) {
-                console.log(preTasks);
-                console.log();
-                
-                
-                
-            } );
-    }
-
     getInnTasks() {
         this.heroesService.getRandomTask()
             .then( preTasks => this.preTasks = preTasks );
-    }   
+    }  
+
+    itemShopSelected(item) {
+        this.selectedItem = item;
+    }
+
+    shopAction(selectedItem) {
+
+        let item = this.hero.items.find( item => item.id === selectedItem.id );
+
+        if (selectedItem && selectedItem.amount != 0 && this.hero.wallet >= selectedItem.price) {
+            console.log(item);
+    
+            if (item != undefined ) {
+                selectedItem.amount--;
+                item.amount++;
+                this.hero.wallet = this.hero.wallet - selectedItem.price;
+                console.log(this.hero.items); 
+
+            } 
+            else if (item === undefined) {
+
+                let newItem = <Items> JSON.parse(JSON.stringify(selectedItem));
+                selectedItem.amount--;
+                newItem.amount = 1;
+                console.log(newItem);
+                
+                this.hero.wallet = this.hero.wallet - newItem.price;
+                this.hero.items.push( newItem )
+                console.log(this.hero.items);
+            }
+
+        } else {
+
+            alert( "Not enough money for shopping, or goods in shop!" );
+
+        }
+    }
 
     gotoInn() {
         this.inn = !this.inn;
-        this.getInnTasks();
+        this.getInnTasks();  
     }
 
     closeInn() {
@@ -81,9 +109,14 @@ export class DashboardComponent implements OnInit {
                 this.hero.class.power = 1.5*(this.hero.class.mana) + 1.2*(this.hero.class.wisdom);
 
                 this.heroesService.getHeroTask( id, heroTasks )
-                .then( HeroTasks => this.tasks = HeroTasks )
+                .then( heroTasks => this.tasks = heroTasks )
                 
                 return this.hero;
             }.bind( this ) );
+
+
+        this.heroesService.getShopItems()
+            .then( shopItems => this.shopItems = shopItems )
+    
     }
 }
