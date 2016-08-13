@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
     tasks: Task[];
     preTasks: Task[] = [];
     shopItems: Items[];
-    item:Items;
     selectedItem: any;
     
 
