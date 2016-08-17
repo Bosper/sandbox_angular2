@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
 
     hero: Hero;
     tasks: Task[];
-    preTasks: Task[] = [];
+    usableTask: Task[] = [];
     shopItems: Items[];
     selectedItem: any;
     
@@ -30,8 +30,9 @@ export class DashboardComponent implements OnInit {
     taskId: any;
 
     getInnTasks() {
-        this.heroesService.getRandomTask()
-            .then( preTasks => this.preTasks = preTasks );
+        let heroTask = this.hero.task;
+        this.heroesService.getRandomTask(heroTask)
+            .then( usableTask => this.usableTask = usableTask );
     }  
 
     itemShopSelected(item) {

@@ -35,35 +35,28 @@ private itemURL = 'app/sweetshop';
     getHeroTask( id: number[], heroTasks: Task[] ) {
         return this.getTasks()
             .then( function( tasks ) {
-                console.log(tasks);
-                console.log(id);
-                
                 for (let z = 0; z < id.length; z++) {
-                    console.log(id[z]);
                         for (let i = 0; i < tasks.length; i++) {
-                        console.log( tasks[i] );
                         if ( id && id[z] == tasks[i].id ) {
-                            console.log( 'task: ' + tasks[i] );
                             heroTasks.push( tasks[i] )
-                        } else {
-                            console.log( '!: ' + tasks[i] );
-                        }
+                        } 
                     }
                 }    
-                console.log(heroTasks);
                 return heroTasks;
             } )
     }
 
-    getRandomTask( preTasks: Task[] = [] ) {
+    getRandomTask( preTask:number[], usableTask = [] ) {
         return this.getTasks()
             .then( function( tasks ) {
-                for (let index = 0; index < 1; index++) {
-                let random = Math.floor(( Math.random() * 4 ) + 1);
-                preTasks.push( tasks[random] );
-                console.log( preTasks );
+                let freeTasks = tasks.filter( task => preTask.indexOf(task.id) === -1 )
+
+                for (let i = 0; i < 1; i++) {
+                let random = Math.floor(( Math.random() * freeTasks.length ));
+                usableTask.push( freeTasks[random] );
                 }
-            return preTasks;
+
+            return usableTask;
         } )
     }
 

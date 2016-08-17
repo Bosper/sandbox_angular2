@@ -8,12 +8,11 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { HTTP_PROVIDERS } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { APP_ROUTER_PROVIDERS } from './app.router'
+import { APP_ROUTER_PROVIDERS } from './app.router';
 
 bootstrap( AppComponent, [
     APP_ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
     { provide: XHRBackend, useClass: InMemoryBackendService },  // Memory server
     { provide: SEED_DATA, useClass: InMemoryDataService }       // Memory data
-    //{ provide: SEED_DATA, useClass: InMemoryTaskService }       // Memory data
 ] );

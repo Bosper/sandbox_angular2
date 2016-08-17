@@ -28,7 +28,7 @@
             <input class="btn btn-default" *ngIf="inn" type="button" value="Close Inn" (click)="closeInn()">
             <div *ngIf="inn">
                 <ul>
-                    <li name="preTasks" *ngFor="let task of preTasks">{{ task.id }}&nbsp;{{ task.title }}&nbsp;{{ task.reward }}</li>
+                    <li name="usableTask" *ngFor="let task of usableTask">{{ task.id }}&nbsp;{{ task.title }}&nbsp;{{ task.reward }}</li>
                 </ul>
             </div>
         </div>
