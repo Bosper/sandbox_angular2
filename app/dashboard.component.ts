@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { Hero } from './hero.class';
 import { Task } from './task.class';
@@ -79,7 +79,41 @@ export class DashboardComponent implements OnInit {
 
     closeInn() {
         this.inn = !this.inn;
-        this.preTasks = [];
+        this.usableTask = [];
+    }
+
+    pickTask(task:Task, isEqueal:number) {
+        console.log(task.id);
+        let newTask:number = task.id;
+
+        for (let i = 0; i < this.hero.task.length; i++) {
+            if (this.hero.task[i] != newTask) {
+                isEqueal = 0;
+            } else {
+                isEqueal = 1;
+            }
+        }
+
+        console.log(isEqueal);
+        if (isEqueal === 0) {
+            this.hero.task.push(newTask);
+        } else {
+            console.log("You are signed for task with ID: " + newTask);
+                
+        };
+
+        this.usableTask = [];
+        
+        
+        console.log(this.hero.task);
+
+
+        let id = this.hero.task;
+	    let heroTasks: Task[] = [];
+
+        this.heroesService.getHeroTask( id, heroTasks )
+                .then( heroTasks => this.tasks = heroTasks )
+                
     }
 
     goWork( hero:Hero ) {
