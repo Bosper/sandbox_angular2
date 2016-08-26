@@ -97,7 +97,14 @@ export class InMemoryDataService {
             { id: 3, name: "Torch", amount: 12, price: 3 },
             { id: 11, name: 'Pork', amount: 35, price: 5 }
         ];
+
+        let rumors = [
+            { id: 1, rumor: "Lorem ipsum" },
+            { id: 2, rumor: "Dolor est" },
+            { id: 3, rumor: "Impact dest" },
+            { id: 4, rumor: "Curicullum thae" }
+        ]
         
-        return { heroes, tasks, sweetshop };
+        return { heroes, tasks, sweetshop, rumors };
     }
 }

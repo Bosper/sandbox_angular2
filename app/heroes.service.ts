@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { Hero } from './hero.class';
 import { Items } from './item.class';
 import { Task } from './task.class';
+import { Rumor } from './rumor.class';
 
 @Injectable()
 
@@ -13,6 +14,7 @@ export class HeroesService {
 private heroesURL = 'app/heroes';
 private taskURL = 'app/tasks';
 private itemURL = 'app/sweetshop';
+private rumorURL = 'app/rumors';
 
     constructor( private http: Http ) {
 
@@ -23,6 +25,23 @@ private itemURL = 'app/sweetshop';
             .toPromise()
             .then( response => response.json().data )
             .catch( this.handleError ); 
+    }
+
+    getRumors(): Promise<Rumor[]> {
+        return this.http.get( this.rumorURL )
+            .toPromise()
+            .then( response => response.json().data )
+            .catch( this.handleError );
+    }
+
+    getRandomRumor() {
+        return this.getRumors()
+            .then(
+                function(rumors) {
+                    let randomRumor:Rumor = rumors[Math.floor(Math.random()*rumors.length)]
+                    return randomRumor;
+                }
+            ) 
     }
 
     getTasks(): Promise<Task[]> {

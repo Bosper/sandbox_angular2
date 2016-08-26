@@ -3,6 +3,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Hero } from './hero.class';
 import { Task } from './task.class';
 import { Items } from './item.class';
+import { Rumor } from './rumor.class';
 import { HeroesService } from './heroes.service';
 
 import 'rxjs/add/operator/toPromise';
@@ -25,6 +26,8 @@ export class DashboardComponent implements OnInit {
     usableTask: Task[] = [];
     shopItems: Items[];
     selectedItem: any;
+    rumors: Rumor[];
+    randomRumor: Rumor;
     
 
     taskId: any;
@@ -37,6 +40,28 @@ export class DashboardComponent implements OnInit {
 
     itemShopSelected(item) {
         this.selectedItem = item;
+    }
+
+    getRumors() {
+        return this.heroesService.getRandomRumor()
+            .then( randomRumor => this.randomRumor = randomRumor )
+    }
+
+    merchantAction() {
+        let t = this.hero.task;
+        let checkTask = t.filter( taskCheck )
+
+        function taskCheck(val) {
+            return val === 3 || val === 5;
+        }
+
+        console.log(checkTask);
+
+        if (checkTask.length) {
+            console.log("ALOCHA!");   
+        }
+
+        return checkTask;
     }
 
     shopAction(selectedItem) {
@@ -102,7 +127,7 @@ export class DashboardComponent implements OnInit {
                 
         };
 
-        this.usableTask = [];
+        this.usableTask.pop();
         
         
         console.log(this.hero.task);
