@@ -8,6 +8,8 @@ import { HeroesService } from './heroes.service';
     <nav>
         <a [routerLink]="['dashboard']">Dashboard</a>
         <a [routerLink]="['heroes']">Heroes</a>
+        <a [routerLink]="['home']">Home</a>
+        <a [routerLink]="['world']">World</a>
     </nav>
     <router-outlet></router-outlet>`,
     directives: [ ROUTER_DIRECTIVES ],

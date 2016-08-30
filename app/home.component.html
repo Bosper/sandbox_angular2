@@ -1,0 +1,14 @@
+<h3>Hello from home</h3>
+<div id="world" class="wrapper">
+    <div *ngFor="let cell of world">
+        <div class="tile-generic" *ngFor="let col of cell; let j=index" (click)="doAction(col)">{{ cell[j].id }}<img *ngIf="cell[j].tile" class="cell_big" src="{{ cell[j].tile }}" /></div>
+    </div>
+    <button style="position: relative; display:block; margin-left: 600px;" type="text" (click)="fillGrass()">Grass</button>
+
+    <!--<template let-group ngFor [ngForOf]="tile">
+        <div *ngFor="let row of tile">{{ row }}</div>
+    </template>-->
+
+    <!--<div class="tile-generic" *ngFor="let n of tile; let j=index">{{ n[j] }}</div>-->
+
+</div>

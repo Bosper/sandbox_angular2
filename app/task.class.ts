@@ -3,4 +3,7 @@ export class Task {
     title: string;
     description: string;
     reward: string;
+    questItem: number;
+    itemAmount:number;
+    npc: number;
 }

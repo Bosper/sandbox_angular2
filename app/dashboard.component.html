@@ -82,7 +82,7 @@
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <ul>Item Shop <button (click)="getRumors()">Rumors</button><span *ngIf="randomRumor">{{ randomRumor.rumor }}</span><button (click)="merchantAction()">checkTask</button>
+            <ul>Item Shop <button (click)="getRumors()">Rumors</button><span *ngIf="randomRumor">{{ randomRumor.rumor }}</span><button (click)="merchantTask()">checkTask</button>
                 <li *ngFor="let item of shopItems" (click)="itemShopSelected(item)"><span>{{ item.name }}</span><span>&nbsp;x{{ item.amount }}</span></li>
             </ul>
         </div>

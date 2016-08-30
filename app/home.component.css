@@ -1,0 +1,28 @@
+.tile-generic {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  box-shadow:inset 0px 0px 0px 1px #000;
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  background: url('assets/world/terrain/grass32.png');
+}
+
+.tile-generic:hover {
+  box-shadow:inset 0px 0px 0px 1px yellow;
+}
+
+.wrapper {
+  position: relative;
+  display: block;
+  width:512px;
+  height:512px;
+}
+
+.cell_big {
+  position: absolute; 
+  top: 0; 
+  left: 0;
+  z-index: 1000;
+}

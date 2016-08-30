@@ -64,6 +64,21 @@ export class DashboardComponent implements OnInit {
         return checkTask;
     }
 
+    merchantTask() {
+        let t = this.hero.task;
+        console.log(t);
+
+        return this.heroesService.getTasks()
+            .then(function() {
+                
+            }); 
+
+        
+        
+        
+
+    }
+
     shopAction(selectedItem) {
 
         let item = this.hero.items.find( item => item.id === selectedItem.id );
