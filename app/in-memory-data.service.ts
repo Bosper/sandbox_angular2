@@ -17,7 +17,10 @@ export class InMemoryDataService {
                     { id: 3, name: 'Torch', amount: 1, price: 3 }
                 ],
                 task: [ 1, 2, 5 ],
-                wallet: 0
+                wallet: 0,
+                tile: 'assets/world/character/hero-small.png',
+                x: 1,
+                y: 1
             },
             {   id: 2, 
                 active: false,
@@ -34,7 +37,10 @@ export class InMemoryDataService {
                     { id: 33, name: 'Beer', amount: 2, price: 2 }
                 ],
                 task: [ 3, 4 ],
-                wallet: 0
+                wallet: 0,
+                tile: '',
+                x: 1,
+                y: 1
             },
             { 
                 id: 3, 
@@ -52,7 +58,10 @@ export class InMemoryDataService {
                     { id: 66, name: 'Bread', amount: 2, price: 4 }
                 ],
                 task: [],
-                wallet: 0
+                wallet: 0,
+                tile: '',
+                x: 1,
+                y: 1
             }
         ];
 

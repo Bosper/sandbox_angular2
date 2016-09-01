@@ -1,0 +1,21 @@
+{
+  "name": "angular2-sandbox",
+  "description": "Small dwarf game",
+  "main": "main.ts",
+  "authors": [
+    "Grzegorz Lechowski <Grzegorz.Lechowski@alior.pl>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "2"
+  ],
+  "homepage": "https://github.com/Bosper/sandbox_angular2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

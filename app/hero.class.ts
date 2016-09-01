@@ -11,4 +11,7 @@ export class Hero {
     items: Items[];
     task: number[];
     wallet: number;
+    tile: string;
+    x:number;
+    y:number;
 }

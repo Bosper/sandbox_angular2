@@ -9,7 +9,18 @@
   background: url('assets/world/terrain/grass32.png');
 }
 
-.tile-generic:hover {
+.tile-generic-2 {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  box-shadow:inset 0px 0px 0px 1px #000;
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  z-index: 1000;
+}
+
+.tile-generic-2:hover {
   box-shadow:inset 0px 0px 0px 1px yellow;
 }
 
@@ -24,5 +35,5 @@
   position: absolute; 
   top: 0; 
   left: 0;
-  z-index: 1000;
+  z-index: 100;
 }
