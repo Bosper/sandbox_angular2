@@ -11,6 +11,7 @@ export const routes: RouterConfig = [
   { path: 'tasks', component: DetailComponent },
   { path: 'sweetshop', component: DashboardComponent },
   { path: 'home', component: HomeLocal },
+  { path: 'npcs', component: HomeLocal },
   { path: 'world', component: OperWorld },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'  },
   { path: 'detail/:id', component: DetailComponent }

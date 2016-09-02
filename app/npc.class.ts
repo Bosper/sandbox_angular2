@@ -1,8 +1,12 @@
-import { Group } from './group.class';
+import { Items } from './item.class';
 
-export class npc extends Group {
+// extends Group
+export class Npc {
     id: number;
     model: number;
+    tile: string;
     name: string;
-    inventory: number[];
+    inventory: Items[];
+    x: number;
+    y: number;
 }

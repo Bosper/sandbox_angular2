@@ -6,6 +6,7 @@ import { Hero } from './hero.class';
 import { Items } from './item.class';
 import { Task } from './task.class';
 import { Rumor } from './rumor.class';
+import { Npc } from './npc.class';
 
 @Injectable()
 
@@ -15,6 +16,7 @@ private heroesURL = 'app/heroes';
 private taskURL = 'app/tasks';
 private itemURL = 'app/sweetshop';
 private rumorURL = 'app/rumors';
+private npcsURL = 'app/npcs';
 
     constructor( private http: Http ) {
 
@@ -22,6 +24,13 @@ private rumorURL = 'app/rumors';
 
     getHeroes(): Promise<Hero[]> {
         return this.http.get( this.heroesURL )
+            .toPromise()
+            .then( response => response.json().data )
+            .catch( this.handleError ); 
+    }
+
+    getNpcs(): Promise<Npc> {
+        return this.http.get( this.npcsURL )
             .toPromise()
             .then( response => response.json().data )
             .catch( this.handleError ); 

@@ -129,11 +129,23 @@ export class InMemoryDataService {
             { id: 4, rumor: "Curicullum thae" }
         ];
 
-        let npc = [
+        let npcs = [
             //Friendly
-            { id:1000, model: 0, name: "Merchand Jora", inventory: [ 77, 66, 2 ] },
+            { 
+                id: 1000, 
+                model: 0, 
+                tile: "assets/world/character/npc.png", 
+                name: "Merchand Jora", 
+                inventory: 
+                [ 
+                    { id: 3, name: "Torch", amount: 12, price: 3 },
+                    { id: 11, name: 'Pork', amount: 35, price: 5 }
+                 ], 
+                x: 5, 
+                y: 10 
+            },
             //Hoslitie
-            { id:9000, model: 0, name: "Small Boar", inventory: [ 70, 60 ] },
+            //{ id:9000, model: 0, name: "Small Boar", inventory: [ 70, 60 ] },
         ];
 
         let items = [
@@ -151,6 +163,6 @@ export class InMemoryDataService {
             { id: 60, name: 'Boar Meat', amount: 1, price: 9 }
         ];
         
-        return { heroes, tasks, sweetshop, rumors };
+        return { heroes, tasks, sweetshop, rumors, npcs };
     }
 }

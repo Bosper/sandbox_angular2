@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeroesService } from './heroes.service';
 import { Hero } from './hero.class';
 import { TileModel } from './tile.model';
+import { Npc } from './npc.class';
 
 @Component({
     selector: 'local-area',
@@ -27,14 +28,20 @@ export class HomeLocal implements OnInit {
         { id: 1, name: 'stoneRoad', x:8, y:7, tile: 'assets/world/terrain/stone_road32.png' },
         { id: 1, name: 'stoneRoad', x:9, y:7, tile: 'assets/world/terrain/stone_road32.png' },
         { id: 100, name: 'tree', x:9, y:1, tile: 'assets/world/terrain/tree128.png' },
-        { id: 100, name: 'house', x:1, y:5, tile: 'assets/world/terrain/house160.png' }
+        { id: 100, name: 'house', x:1, y:5, tile: 'assets/world/terrain/house160.png' },
+
 
     ];
+
+    // npcs: Npc[] = [
+    //     { id:  }
+    // ]
        
     //Declare Tab
     world = new Array();
     moveArea = new Array();
     oldTile:TileModel;
+    npc:Npc[];
 
     //Test filling tiles. 
     fillGrass() {
@@ -58,9 +65,6 @@ export class HomeLocal implements OnInit {
         let y = this.hero.y;
         this.moveArea[x][y] = this.hero;
         this.createdHero = true;
-
-
-
     }
 
     //Basic action methos
@@ -92,6 +96,7 @@ export class HomeLocal implements OnInit {
             }
         }
 
+        //Generate moving area
         for(let i = 0; i < resolution; i++) {
             this.moveArea[i] = new Array();
 	        for(let j = 0; j < resolution; j++) {
@@ -104,6 +109,7 @@ export class HomeLocal implements OnInit {
             }
         }
 
+        //Filling world with objects
         for (var i = 0; i < this.tiles.length; i++) {
 
             let id = this.tiles[i].id;
@@ -114,6 +120,20 @@ export class HomeLocal implements OnInit {
 
             this.world[this.tiles[i].x][this.tiles[i].y] = this.tiles[i];
         } 
+
+        this.heroesService.getNpcs()
+            .then( function (npc:Npc[]) {
+                this.npc = npc;
+                console.log(this.npc);
+                
+                for (var i = 0; i < this.npc.length; i++) {
+                    var element = this.npc[i];
+                    console.log(element);
+                    
+                    
+                }
+                
+            }.bind(this) )
 
         // this.heroesService.activeHero()
         //     .then( hero => this.hero = hero );
